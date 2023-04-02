@@ -29,15 +29,19 @@ module.exports.create = function (req, res) {
 }
 
 module.exports.updateTime = function (req, res) {
-    let date = req.body.date;
-    let time = req.body.time;
+    let sDate = req.body.sDate;
+    let sTime = req.body.sTime;
+    let eDate = req.body.eDate;
     let eTime = req.body.eTime;
-    let e_id = req.body.e_id;
-    let sTime = new Date(date + " " + time);
-    let enTime = moment(sTime).add(parseInt(eTime.substr(0, 2)), 'h').add(parseInt(eTime.substr(3)), 'm').toDate();
-    Election.findByIdAndUpdate(e_id, {scheduleTime : sTime, endTime : enTime}).exec((err, data) => {
+    let eId = req.body.e_id;
+    let scheduledTime = new Date(sDate + " " + sTime);
+    let endTime = new Date(eDate + " " + eTime); 
+    
+    console.log(req.body, scheduledTime, endTime);
+    // let enTime = moment(scheduledTime).add(parseInt(eTime.substr(0, 2)), 'h').add(parseInt(eTime.substr(3)), 'm').toDate();
+    Election.findByIdAndUpdate(eId, {scheduleTime : scheduledTime, endTime : endTime}).exec((err, data) => {
         if(err){req.flash('error','Unable to update time of election'); console.log('Error in updating time of election', err);}
         else{req.flash('success','Election time updated');}
-        return res.redirect('/admin/get_election_info?election_id=' + e_id);
+        return res.redirect('/admin/get_election_info?election_id=' + eId);
     });
 }

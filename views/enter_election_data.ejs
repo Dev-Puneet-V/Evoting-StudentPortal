@@ -35,11 +35,13 @@
         <form class="scdle-time" action='/admin/update_election_time' method="POST" style="margin-top: 20px; color : lightblue">
             <input value="<%= id%>" style="display: none;" name="e_id">
             <label>Scheduled Date</label>
-            <input type="Date" placeholder="Start date" name="date" required>
-            <label>Scheduled Time</label>
-            <input type="time" placeholder="Start time" name="time" required>
-            <label>Alloted Time</label>
-            <input type="time" placeholder="Total alloted time" name="eTime" required>
+            <input type="Date" placeholder="Start date" name="sDate" required>
+            <label>Start Time</label>
+            <input type="time" placeholder="Start time" name="sTime" required>
+            <label>End Date</label>
+            <input type="Date" placeholder="End date" name="eDate" required>
+            <label>End Time</label>
+            <input type="time" placeholder="End time" name="eTime" required>
             <button type="submit" style="height: 30px; width : 100px; margin: 5px;">Save</button>
         </form>
     </div>

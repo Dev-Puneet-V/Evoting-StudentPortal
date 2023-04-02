@@ -1,7 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const port = 5000;
-const env = require('./config/environment')
 const db = require('./config/mongoose');
 const session = require('express-session');
 const  passport = require('passport');
@@ -21,8 +21,8 @@ app.use(express.static('assets'));
 app.use(express.urlencoded());
 app.use(
   session({
-    name: env.session_name,
-    secret: env.secret,
+    name: process.env.SESSION_NAME,
+    secret: process.env.SECRET,
     resave: true,
     cookie: {
       maxAge: (1000 * 60  * 10)

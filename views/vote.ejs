@@ -48,7 +48,6 @@
             let diffHrs =  Math.floor(diffTime / (1000 * 60 * 60) - (diffDays * 24));
             let diffMins = Math.floor(diffTime / (1000 * 60) - diffHrs * 60 - (diffDays * 24 * 60));
             let diffSecs = Math.floor(diffTime / (1000) - diffMins * 60 - diffHrs * 60 * 60 - (diffDays * 24 * 60 * 60));
-            console.log(diffTime);
             if(diffTime >= 0) {
                 eId.innerHTML = val + diffDays + 'd ' + diffHrs + 'h '+ diffMins + 'm '+ diffSecs + 's';
             }else {
